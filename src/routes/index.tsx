@@ -269,7 +269,7 @@ function Index() {
             disabled={!canCalculate}
             className="mt-8 w-full rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow-md shadow-primary/20 transition hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Calculer mon budget
+            Planifier mon mois
           </button>
         </section>
 

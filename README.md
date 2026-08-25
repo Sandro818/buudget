@@ -1,12 +1,33 @@
 # Bidjè: Mon Budget Simple
-
-Crée une application web simple de planification de budget mensuel, appelée Bidjè. L'utilisateur doit pouvoir saisir : — son revenu mensuel, en gourdes — le nombre de personnes dans son ménage — s'il paie un loyer ou non — son objectif : épargner, rembourser une dette, ou tenir jusqu'à la fin du mois L'application doit ensuite calculer et afficher : — un montant conseillé pour chaque poste : logement, nourriture, transport, école, santé, imprévus, épargne — le pourcentage du revenu que représente chaque poste — une répartition en enveloppes hebdomadaires — une phrase de conseil adaptée à l'objectif choisi Utilise un thème bleu et blanc. Tous les textes en français. Garde l'interface simple et facile à comprendre.
+Bidjè est une application web moderne et intuitive de planification de budget mensuel en gourdes (HTG), pensée pour aider les utilisateurs haïtiens à mieux gérer leurs finances personnelles et à atteindre leurs objectifs économiques.
 
 This project was built with [Lovable](https://lovable.dev).
+
+# Contexte et vision
+Dans un environnement où le coût de la vie évolue rapidement, Bidjè offre une solution simple et accessible pour comprendre, organiser et maîtriser ses dépenses.
+L’application met l’accent sur la simplicité, la clarté et la pertinence locale, afin que chacun puisse planifier son mois sans connaissances financières avancées.
+
+# Fonctionnalités principales
+
 
 **Live app**: https://buudget.lovable.app
 
 ## Build with Lovable
+Saisie personnalisée : revenu mensuel, nombre de personnes dans le ménage, paiement de loyer, et objectif du mois (épargner, rembourser une dette, tenir jusqu’à la fin du mois).
+
+Calcul automatique :
+
+Montant conseillé pour chaque poste (logement, nourriture, transport, santé, école, imprévus, épargne).
+
+Pourcentage du revenu attribué à chaque catégorie.
+
+Répartition hebdomadaire en enveloppes pour une gestion progressive.
+
+Phrase de conseil adaptée à l’objectif choisi.
+
+Interface responsive : adaptée aux écrans de téléphone, tablette et ordinateur.
+
+Design épuré : thème bleu et blanc, textes entièrement en français, navigation fluide et intuitive.
 
 Continue developing this project in the [Lovable editor](https://lovable.dev/projects/88a0ef19-ff75-404c-b31c-d9d11980756b).
 

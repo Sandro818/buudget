@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { saveCalculation, listCalculations } from "@/lib/budget.functions";
+import { askConseil } from "@/lib/conseil.functions";
 import {
   GOALS,
   calculateBudget,

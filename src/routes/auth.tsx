@@ -55,7 +55,7 @@ function AuthPage() {
         email,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/calculer`,
+          emailRedirectTo: `${window.location.origin}/auth`,
           data: { display_name: displayName },
         },
       });

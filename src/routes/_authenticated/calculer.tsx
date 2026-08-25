@@ -4,6 +4,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { useState, useMemo } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { saveCalculation, listCalculations } from "@/lib/budget.functions";
+import { askConseil } from "@/lib/conseil.functions";
 import {
   GOALS,
   calculateBudget,
@@ -92,6 +93,21 @@ function Calculer() {
       lines: results,
     });
   };
+
+  const ask = useServerFn(askConseil);
+  const [question, setQuestion] = useState("");
+  const conseil = useMutation({
+    mutationFn: (q: string) =>
+      ask({
+        data: {
+          question: q,
+          ...(numericIncome > 0 ? { income: numericIncome } : {}),
+          people,
+          hasRent,
+          goal: goalLabel(goal),
+        },
+      }),
+  });
 
   const handleSignOut = async () => {
     await queryClient.cancelQueries();
@@ -290,6 +306,58 @@ function Calculer() {
             </div>
           </section>
         )}
+
+        <section className="mt-8 rounded-2xl bg-card p-6 shadow-lg shadow-primary/5 ring-1 ring-border sm:p-8">
+          <h2 className="mb-2 text-xl font-semibold text-foreground">
+            Demander un conseil 🤖
+          </h2>
+          <p className="mb-5 text-sm text-muted-foreground">
+            Posez une petite question sur votre argent. La réponse tient compte de votre
+            situation.
+          </p>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const q = question.trim();
+              if (q.length < 3 || conseil.isPending) return;
+              conseil.mutate(q);
+            }}
+            className="space-y-3"
+          >
+            <label htmlFor="question" className="sr-only">
+              Votre question
+            </label>
+            <textarea
+              id="question"
+              rows={3}
+              value={question}
+              onChange={(e) => setQuestion(e.target.value)}
+              maxLength={500}
+              placeholder="Ex. Comment économiser un peu chaque semaine ?"
+              className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-ring"
+            />
+            <button
+              type="submit"
+              disabled={question.trim().length < 3 || conseil.isPending}
+              className="w-full rounded-xl bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-md shadow-primary/20 transition hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {conseil.isPending ? "Réflexion en cours…" : "Recevoir un conseil"}
+            </button>
+          </form>
+
+          {conseil.isError && (
+            <p className="mt-4 text-sm text-destructive">
+              {(conseil.error as Error).message}
+            </p>
+          )}
+          {conseil.data && (
+            <div className="mt-5 whitespace-pre-line rounded-xl bg-primary-50 p-4 text-primary-900">
+              {conseil.data.answer}
+            </div>
+          )}
+        </section>
+
 
         <section className="mt-8 rounded-2xl bg-card p-6 shadow-lg shadow-primary/5 ring-1 ring-border sm:p-8">
           <h2 className="mb-2 text-xl font-semibold text-foreground">Historique</h2>

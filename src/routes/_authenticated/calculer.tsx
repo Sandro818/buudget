@@ -94,6 +94,21 @@ function Calculer() {
     });
   };
 
+  const ask = useServerFn(askConseil);
+  const [question, setQuestion] = useState("");
+  const conseil = useMutation({
+    mutationFn: (q: string) =>
+      ask({
+        data: {
+          question: q,
+          ...(numericIncome > 0 ? { income: numericIncome } : {}),
+          people,
+          hasRent,
+          goal: goalLabel(goal),
+        },
+      }),
+  });
+
   const handleSignOut = async () => {
     await queryClient.cancelQueries();
     queryClient.clear();

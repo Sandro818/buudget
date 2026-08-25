@@ -45,3 +45,12 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+# Licence
+Ce projet est distribué sous la licence MIT.
+Vous êtes libre de l’utiliser, le modifier et le partager, à condition de conserver la mention de l’auteur original.
+
+# Auteur & Ingénierie
+Projet développé par Lens Sandro Petiote,
+Étudiant en Sciences Informatiques et ingénieur en gestion PC, Android, iPhone, réseaux et virtualisation.
+Passionné par les technologies Cisco, l’administration système et le développement web.
